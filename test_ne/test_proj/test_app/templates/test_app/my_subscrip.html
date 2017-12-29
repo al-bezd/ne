@@ -1,0 +1,29 @@
+{% extends "test_app/index.html" %}
+{% block blog%}
+   <div class="blog-header">
+        <h1 class="blog-title">Мои подписки</h1>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main"><p class="hidden">{{csrf_token}}</p>
+        {%for i in my_subscrip%}
+          <div class="blog-post">
+            <h2 class="blog-post-title">{{i.title_blog}}</h2>
+              <button class="btn btn-warning" onclick="DelFollow('{{i.id}}')">Отписаться</button>
+          </div><!-- /.blog-post -->
+        {%endfor%}
+
+
+
+
+        </div><!-- /.blog-main -->
+
+<!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+{% endblock %}
+{%block script%}
+<script>$('#my_subscrip').addClass('active');</script>
+{%endblock%}

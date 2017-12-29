@@ -1,0 +1,32 @@
+{% extends "test_app/index.html" %}
+{% block blog%}
+   <div class="blog-header">
+        <h1 class="blog-title">Блоги на которые можно подписаться</h1>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+        <p class="hidden">{{csrf_token}}</p>
+        {% for i in free_blog %}
+          <div class="blog-post">
+            <h2 class="blog-post-title">{{i.title_blog}}</h2>
+            <button class="btn btn-success"
+                    onclick="ToFollow('{{i.id}}')">Подписаться</button>
+          </div><!-- /.blog-post -->
+
+        {% endfor %}
+
+
+
+
+        </div><!-- /.blog-main -->
+
+<!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+{% endblock %}
+{%block script%}
+<script>$('#free_blog').addClass('active');</script>
+{%endblock%}
